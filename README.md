@@ -1,4 +1,4 @@
-# testowe repozytorium
+# Testowe repozytorium
 
 Testowe repozytorium - tworzenie i weryfikacja strony z mapą zawierającą warstwy wms
 
