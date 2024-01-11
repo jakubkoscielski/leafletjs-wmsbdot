@@ -1,0 +1,69 @@
+<html>
+   <head>
+      <title>BDOT_Geoserver</title>
+      <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+      <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+   </head>
+
+   <body>
+		<h1 style = "text-align: center"> Przykładowe warstwy BDOT10K dla Powiatu Nowodworskiego </h1>
+      <div id = "map" style = "width: 1080px; height: 720px; margin: auto; border-style: solid "></div>
+      <script>
+         
+         
+         var BUBD_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'Powiat_Nowodworski:BUBD_A',
+         format: 'image/png',
+         transparent: true
+         });
+         var SKJZ_L = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'Powiat_Nowodworski:SKJZ_L',
+         format: 'image/png',
+         transparent: true
+         });
+         var PTWP_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'Powiat_Nowodworski:PTWP_A	',
+         format: 'image/png',
+         transparent: true
+         });
+         var ADJA_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'Powiat_Nowodworski:ADJA_A',
+         format: 'image/png',
+         transparent: true
+         });
+         var PTZB_A_100k = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'Powiat_Nowodworski:PTZB_A_100k	',
+         format: 'image/png',
+         transparent: true
+         });
+		 var PTZB_A = L.tileLayer.wms('http://localhost:8080/geoserver/wms', {
+         layers: 'Powiat_Nowodworski:PTZB_A',
+         format: 'image/png',
+         transparent: true
+         });
+         var mapOptions = {
+            center: [54.21292, 19.11666],
+            zoom: 10,
+			layers: [ADJA_A, BUBD_A, PTWP_A, SKJZ_L, PTZB_A, PTZB_A_100k]
+         }
+
+         var map = new L.map('map', mapOptions);
+
+         var layers = {
+			"Granice administracyjne": ADJA_A,
+            "Budynki": BUBD_A,
+            "Wody powierzchniowe": PTWP_A,
+            "Jezdnie": SKJZ_L,
+            "Zabudowa": PTZB_A,	
+			"Obszary zabudowane": PTZB_A_100k,
+         }
+		 
+		L.control.scale().addTo(map);
+		
+		var layerControl = L.control.layers(null, layers).addTo(map);
+
+
+      </script>
+   </body>
+   
+</html>
